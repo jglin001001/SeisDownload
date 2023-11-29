@@ -1,6 +1,6 @@
 # SeisDownload
-# Jungle LIN
-# jglin001001@foxmail.com
+Creator: Jungle LIN
+Email: jglin001001@foxmail.com
 
 地震事件数据下载
 
