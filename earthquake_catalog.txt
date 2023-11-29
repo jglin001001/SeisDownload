@@ -1,0 +1,4 @@
+1, Time | 2012-03-25T22:37:06.560000Z, Location | (-35.2035/-72.1268), Depth | 28200.0 m, Magnitude | 7.1
+2, Time | 2012-03-20T18:02:47.620000Z, Location | (16.4734/-98.3694), Depth | 19400.0 m, Magnitude | 7.5
+3, Time | 2012-03-14T09:08:36.230000Z, Location | (40.842/145.0154), Depth | 19200.0 m, Magnitude | 7.0
+4, Time | 2012-02-02T13:34:41.010000Z, Location | (-17.7532/167.1814), Depth | 27300.0 m, Magnitude | 7.0
