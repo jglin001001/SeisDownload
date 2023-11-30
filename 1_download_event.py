@@ -6,7 +6,7 @@ client = Client("IRIS")
 
 # 定义查询参数
 start_time = UTCDateTime("2012-01-30")
-end_time = UTCDateTime("2012-03-01")
+end_time = UTCDateTime("2012-03-31")
 min_magnitude = 7.0
 ## 下载指定区域
 min_latitude = None # 指定区域纬度
