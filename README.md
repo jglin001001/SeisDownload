@@ -21,5 +21,5 @@ In English: Download earthquake event data
    
 4. filter_seis. Filter the file that has already removed the instrument response.
 
-## mseed格式文件并没有全部上传
-## Not all mseed format files have been uploaded
+% mseed格式文件并没有全部上传
+% Not all mseed format files have been uploaded
