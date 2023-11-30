@@ -1,21 +1,21 @@
 from obspy import UTCDateTime
 from obspy.clients.fdsn import Client
 
-# 创建 FDSN 客户端，这里使用 IRIS
+# 创建 FDSN 客户端，这里使用 Download_seis
 client = Client("IRIS")
 
 # 定义查询参数
 start_time = UTCDateTime("2012-01-30")
-end_time = UTCDateTime("2012-03-31")
+end_time = UTCDateTime("2012-03-01")
 min_magnitude = 7.0
 ## 下载指定区域
 min_latitude = None # 指定区域纬度
 max_latitude = None
 min_longitude = None # 指定区域经度
 max_longitude = None
-## 下载指定台站
-sta_latitude = None # 台站纬度
-sta_longitude = None # 台站经度
+## 下载指定位置一定震中距的地震数据
+sta_latitude = None # 位置纬度
+sta_longitude = None # 位置经度
 min_radius = None # 最小震中距
 max_radius = None # 最大震中距
 
