@@ -23,7 +23,7 @@ def parse_event_line(line):
 def parse_station_line(line):
     parts = line.split(',')
     network_str = parts[0]
-    station_str =parts[1]
+    station_str = parts[1].strip()
 
     return str(network_str), str(station_str)
 
