@@ -20,3 +20,6 @@ In English: Download earthquake event data
 3. download_seis. According to the above file, download the seismic signals for all channels of station information in the txt file from Iris. The file may generate warnings during operation, but it does not affect program usage. The downloaded seismic data will remove the instrument response and be saved in the folder you specified in image format and mseed format (for example, the mseed file after removing the instrument response is saved in 'Seis_mseed_download_station', and the waveform image file is saved in 'Seis_wave_download_station'). Additionally, you can download data at a specified sampling rate from Iris and uncomment tr.resample.
    
 4. filter_seis. Filter the file that has already removed the instrument response.
+
+## mseed格式文件并没有全部上传
+## Not all mseed format files have been uploaded
