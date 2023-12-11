@@ -80,14 +80,15 @@ for line in lines:
         if channel_stream:
             pre_filt = (0.005, 0.006, 30.0, 35.0)  # 定义一个滤波带以防止在反卷积过程中放大噪声
             tr = channel_stream.remove_response(output='DISP', pre_filt=pre_filt) # 去除仪器响应
-
+            start_time_str = tr[0].stats.starttime.strftime("%Y%m%d_%H%M%S")
             # tr = tr.resample(sampling_rate=5.0) # 可选的,可降采样下载相关数据,降采样时取消注释下面这行即可
             # tr = tr.detrend("demean") # 去均值
             # tr = tr.detrend("linear") # 去线性趋势
             # tr = tr.taper(max_percentage=0.05, type="hann") # 波形尖灭
             # tr = tr.filter('bandpass',freqmin=0.03,freqmax=2,corners=4,zerophase=True) # 可选的，可对特定频段进行滤波
+            print(tr)
 
-            photo_file_path = os.path.join(photo_folder_name, f'{event_number}_{network}_{station}.png')
+            photo_file_path = os.path.join(photo_folder_name, f'{network}.{station}_{start_time_str}.png')
             tr.plot(outfile = photo_file_path,equal_scale=False,format='png')
-            mseed_file_path = os.path.join(mseed_folder_name, f'{event_number}_{network}_{station}.mseed')
+            mseed_file_path = os.path.join(mseed_folder_name, f'{network}.{station}_{start_time_str}.mseed')
             tr.write(mseed_file_path, format="MSEED")
