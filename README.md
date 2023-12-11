@@ -9,8 +9,10 @@ Email: jglin001001@foxmail.com
 2. download_station.  从iris上下载指定区域内所有台站信息。台站信息将保存为txt文件（示例中台站信息保存为‘station_info.txt’），该文件包含台网、台站、台站位置坐标及深度。
    
 3. download_seis.  根据上述的文件，从iris上下载txt文件内台站信息的所有通道的地震信号。该文件运行过程中可能会产生警告，但并不影响程序使用，所下载的地震数据将去除仪器响应，分别以图片形式、mseed格式保存在你所指定的文件夹中（示例中，去除仪器响应后的mseed文件保存在‘Seis_mseed_download_station’，波形图片文件保存在‘Seis_wave_download_station’）。另外，你可以从iris中指定采样率下载数据，取消注释tr.resample即可。另外，还提供了去均值、去线性趋势、波行尖灭以及滤波的操作，取消注释相关行即可。
+
+4. sac.  将上述的mseed格式文件转换为sac格式文件，命名方式为：{network}.{station}.{channel}.{quality}.{start_time.year}.{start_time.julday}.{start_time.hour}{start_time.minute}{start_time.second}.SAC
    
-4. filter_seis.  将已经去除仪器响应后的文件进行滤波。（这个的目的是对仅去除响应的mseed文件进行滤波，如果你想对所有的波形进行滤波，请在3. download_seis进行操作）
+5. filter_seis.  将已经去除仪器响应后的文件进行滤波。（这个的目的是对仅去除响应的mseed文件进行滤波，如果你想对所有的波形进行滤波，请在3. download_seis进行操作）
 
 In English: Download earthquake event data
 1. download_event. Download the earthquake directory with the specified time and minimum magnitude from Iris. Of course, you can also download earthquake data from a specified area or location with a certain epicenter distance. The directory will be saved as a txt format file (in the example, station information will be saved as 'earthquake_catalog.txt'), which includes event sequence number, time, location information, depth, and magnitude.
@@ -19,7 +21,7 @@ In English: Download earthquake event data
 
 3. download_seis. According to the above file, download the seismic signals for all channels of station information in the txt file from Iris. The file may generate warnings during operation, but it does not affect program usage. The downloaded seismic data will remove the instrument response and be saved in the folder you specified in image format and mseed format (for example, the mseed file after removing the instrument response is saved in 'Seis_mseed_download_station', and the waveform image file is saved in 'Seis_wave_download_station'). Additionally, you can download data at a specified sampling rate from Iris and uncomment tr.resample. In addition, it also provides operations such as removing mean, removing linear trend, wave line sharpening, and filtering. Simply uncomment the relevant lines.
    
-4. filter_seis. Filter the file that has already removed the instrument response. The purpose of this is to filter the mseed file that only removes the response. If you want to filter all waveforms, please go to 3 Download_ Seis performs the operation)
+4. sac.  Convert the above mseed format file to a sac format file, named as {network} {station} {channel} {quality} {starttime. year}. {starttime. full day}. {starttime. hour} {starttime. minute} {starttime. second}.sac
+ 
+6. filter_seis.  Filter the file that has already removed the instrument response. The purpose of this is to filter the mseed file that only removes the response. If you want to filter all waveforms, please go to 3 Download_ Seis performs the operation)
 
-% mseed格式文件并没有全部上传
-% Not all mseed format files have been uploaded
