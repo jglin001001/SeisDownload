@@ -1,0 +1,36 @@
+from obspy import read
+import os
+
+# 指定 MiniSEED 文件所在的文件夹
+mseed_folder = "Seis_mseed_download_station"
+# 指定 SAC 文件输出的文件夹
+sac_folder = "sac"
+os.makedirs(sac_folder, exist_ok=True)
+
+# 遍历文件夹中的所有文件
+for file in os.listdir(mseed_folder):
+    # 检查文件是否是 MiniSEED 格式
+    if file.endswith(".mseed"):
+        mseed_file = os.path.join(mseed_folder, file)
+
+        # 读取 MiniSEED 文件
+        stream = read(mseed_file)
+
+        # 循环处理每个轨迹（Trace）并生成 SAC 文件名
+        for trace in stream:
+            # 提取头文件信息
+            stats = trace.stats
+            network = stats.network
+            station = stats.station
+            channel = stats.channel
+            quality = "D"  # 质量码
+            start_time = stats.starttime
+
+            # 构造 SAC 文件名
+            sac_file = f"{network}.{station}.{channel}.{quality}.{start_time.year}.{start_time.julday:03d}.{start_time.hour:02d}{start_time.minute:02d}{start_time.second:02d}.SAC"
+
+            # 写入 SAC 文件
+            sac_output_path = os.path.join(sac_folder, sac_file)
+            trace.write(sac_output_path, format='SAC')
+
+print("转换完成")
