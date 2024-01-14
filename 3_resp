@@ -1,0 +1,36 @@
+from obspy.clients.fdsn import Client
+import os
+
+# 创建 FDSN 客户端
+client = Client("IRIS")
+
+# 确保保存响应文件的文件夹存在
+os.makedirs("./RESP", exist_ok=True)
+
+# 读取台站信息文件
+with open("station_info.txt", "r") as file:
+    for line in file:
+        try:
+            # 解析台站信息
+            network, station, latitude, longitude, elevation = line.split(", ")
+
+            # 对每个指定的通道尝试下载仪器响应文件
+            for channel in ['HHZ','HHN','HHE','HH1','HH2',
+                            'ELZ','ELN','ELE','EL1','EL2',
+                            'BHZ','BHN','BHE','BH1','BH2',
+                            'HDH', 'EDH']:
+                try:
+                    # 下载仪器响应信息
+                    inventory = client.get_stations(network=network, station=station,
+                                                    channel=channel, level="response")
+
+                    # 文件命名并保存
+                    stationxml_file = f"./RESP/{network}.{station}.{channel}.xml"
+                    inventory.write(stationxml_file, format="STATIONXML")
+                    print(f"Saved {stationxml_file}")
+                except Exception as e:
+                    print(f"Error for {network}, {station}, {channel}: {e}")
+                    continue  # 尝试下一个通道
+
+        except Exception as e:
+            print(f"Failed to process line: {line}\nError: {e}")
