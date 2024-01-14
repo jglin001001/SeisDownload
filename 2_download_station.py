@@ -6,9 +6,9 @@ client = Client("IRIS")
 
 # 下载指定区域内的地震台站
 min_latitude = 16
-max_latitude = 17
+max_latitude = 16.2
 min_longitude = 149
-max_longitude = 150
+max_longitude = 149.3
 sta_start_time = UTCDateTime('2012-1-30')
 sta_end_time = UTCDateTime('2012-3-31')
 
