@@ -23,11 +23,12 @@ for file in os.listdir(mseed_folder):
             network = stats.network
             station = stats.station
             channel = stats.channel
+            location = stats.location if stats.location else "00"
             quality = "D"  # 质量码
             start_time = stats.starttime
 
             # 构造 SAC 文件名
-            sac_file = f"{network}.{station}.{channel}.{quality}.{start_time.year}.{start_time.julday:03d}.{start_time.hour:02d}{start_time.minute:02d}{start_time.second:02d}.SAC"
+            sac_file = f"{network}.{station}.{location}.{channel}.{quality}.{start_time.year}.{start_time.julday:03d}.{start_time.hour:02d}{start_time.minute:02d}{start_time.second:02d}.SAC"
 
             # 写入 SAC 文件
             sac_output_path = os.path.join(sac_folder, sac_file)
