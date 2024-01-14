@@ -1,0 +1,40 @@
+from obspy import read
+import os
+
+# 读取台站信息文件并创建字典
+station_info_path = "./station_info.txt"
+station_dict = {}
+with open(station_info_path, "r") as file:
+    for line in file:
+        network, station, latitude, longitude, elevation = line.split(", ")
+        station_dict[station] = {
+            "latitude": float(latitude),
+            "longitude": float(longitude),
+            "elevation": float(elevation)
+        }
+
+sac_folder = "./sac"
+output_folder = "./sac_add"
+os.makedirs(output_folder, exist_ok=True)
+
+for sac_file in os.listdir(sac_folder):
+    if sac_file.endswith(".SAC"):
+        sac_file_path = os.path.join(sac_folder, sac_file)
+
+        # 从文件名中提取台站名
+        station = sac_file.split(".")[1]
+
+        # 读取 SAC 文件
+        st = read(sac_file_path)
+        for trace in st:
+            # 检查台站名是否在字典中
+            if station in station_dict:
+                trace.stats.sac.stla = station_dict[station]["latitude"]
+                trace.stats.sac.stlo = station_dict[station]["longitude"]
+                trace.stats.sac.stel = station_dict[station]["elevation"]
+
+                output_filename = f"{sac_file}"
+                output_file = os.path.join(output_folder, output_filename)
+                trace.write(output_file, format='SAC')
+
+print("处理完成")
