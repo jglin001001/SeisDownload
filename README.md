@@ -1,9 +1,9 @@
-# SeisDownload（实现波形展示显示P/S到时）
+# SeisDownload
 Creator: Jungle LIN, Yuechu WU
 
 Email: jglin001001@foxmail.com
 
-中文：地震事件数据下载
+中文：地震事件数据下载（实现波形展示显示P/S到时）
 1. download_event.  从iris上下载指定时间及最低震级的地震目录。当然，你也可以下载指定区域或者指定位置一定震中距的地震数据，该目录将保存为txt格式文件（示例中台站信息保存为‘earthquake_catalog.txt’），该文件包含事件序号、时间、位置信息、深度及震级。
    
 2. download_station.  从iris上下载指定区域内所有台站信息。台站信息将保存为txt文件（示例中台站信息保存为‘station_info.txt’），该文件包含台网、台站、台站位置坐标及深度。
@@ -18,7 +18,7 @@ Email: jglin001001@foxmail.com
 
 7. 测试是否添加成功lat、lon。
 
-In English: Download earthquake event data
+In English: Download earthquake event data(Achieve waveform display to display P/S arrival)
 1. download_event. Download the earthquake directory with the specified time and lowest magnitude from iris. Of course, you can also download seismic data of a specified area or a certain epicentral distance at a specified location. The directory will be saved as a txt format file (in the example, the station information is saved as 'earthquake_catalog.txt'). The file contains event number, time, and location. Information, depth and magnitude.
    
 2. download_station. Download all station information in the specified area from iris. The station information will be saved as a txt file (in the example, the station information is saved as ‘station_info.txt’). The file contains the station network, station, station location coordinates and depth.
