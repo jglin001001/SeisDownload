@@ -1,0 +1,11 @@
+from obspy import read
+
+st = read("./sac_add/XF.B01.00.HH1.D.2012.033.133441.SAC")
+st.plot()
+
+trace = st[0]
+print(trace.stats)
+
+if hasattr(trace.stats, 'sac'):
+    for key, value in trace.stats.sac.items():
+        print(f"{key}: {value}")
