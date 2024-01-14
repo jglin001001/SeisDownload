@@ -1,4 +1,4 @@
-# SeisDownload
+# SeisDownload（实现波形展示显示P/S到时）
 Creator: Jungle LIN, Yuechu WU
 
 Email: jglin001001@foxmail.com
